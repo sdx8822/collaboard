@@ -1,10 +1,11 @@
 "use client";
 
 import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu";
-import { Link2, Trash2 } from "lucide-react";
+import { Link2, Pencil, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { useApiMutation } from "@/hooks/use-api-mutation";
+import { useRenameModal } from "@/store/use-rename-modal";
 import { api } from "@/convex/_generated/api";
 
 import {
@@ -32,6 +33,7 @@ export const Actions = ({
   id,
   title,
 }: ActionsProps) => {
+  const { onOpen } = useRenameModal();
   const { mutate, pending } = useApiMutation(api.board.remove);
 
   const onCopyLink = () => {
@@ -63,6 +65,14 @@ export const Actions = ({
         >
           <Link2 className="h-4 w-4 mr-2" />
           Copy board link
+        </DropdownMenuItem>
+
+        <DropdownMenuItem
+          className="p-3 cursor-pointer"
+          onClick={() => onOpen(id, title)}
+        >
+          <Pencil className="h-4 w-4 mr-2" />
+          Rename
         </DropdownMenuItem>
 
         <ConfirmModal
