@@ -18,7 +18,7 @@ interface InfoProps {
 }
 
 const TabSeparator = () => {
-  return <div className="text-neutral-300 px-1.5"></div>;
+  return <div className="text-neutral-300 px-px py-3 bg-neutral-200"></div>;
 };
 
 export const Info = ({ boardId }: InfoProps) => {
