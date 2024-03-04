@@ -130,3 +130,5 @@ export enum CanvasMode {
   SelectionNet,
   Translating,
 }
+
+export type Layer = RectangleLayer | EllipseLayer | PathLayer | TextLayer | NoteLayer;
